@@ -4,7 +4,12 @@
       "Bash(npm view:*)",
       "Bash(findstr:*)",
       "Bash(npm install:*)",
-      "Bash(pnpm install)"
+      "Bash(pnpm install)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm --version:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix: regenerate pnpm lockfile for pnpm 9.15.0\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)"
     ]
   }
 }
