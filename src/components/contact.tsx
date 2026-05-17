@@ -9,8 +9,8 @@ export function Contact() {
     {
       icon: <Mail className="h-5 w-5" />,
       title: 'Email',
-      value: 'shse1502@colorado.edu',
-      href: 'mailto:shse1502@colorado.edu',
+      value: 'shivarajs250503@gmail.com',
+      href: 'mailto:shivarajs250503@gmail.com',
       color: 'text-blue-600'
     },
     {

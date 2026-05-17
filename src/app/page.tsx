@@ -91,19 +91,6 @@ export default function Home() {
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">
-      {/* hi-tech grid background */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.20] dark:opacity-[0.30]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, rgba(99,102,241,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,0.18) 1px, transparent 1px)',
-          backgroundSize: '40px 40px',
-          maskImage:
-            'radial-gradient(ellipse at center, black 35%, transparent 75%)',
-        }}
-      />
-
       {/* aurora glows */}
       <div
         aria-hidden

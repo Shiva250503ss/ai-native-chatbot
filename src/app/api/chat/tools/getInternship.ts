@@ -16,7 +16,7 @@ export const getInternship = tool({
 - 🔥 I build things that work, learn fast, and bring great energy (plus cricket analogies) to the team! 🏏
 
 📬 **Contact me** via:
-- Email: shse1502@colorado.edu
+- Email: shivarajs250503@gmail.com
 - Phone: (720) 260-6977
 - LinkedIn: [shivaraj-senthil-rajan](https://www.linkedin.com/in/shivaraj-senthil-rajan-2b8898227/)
 - GitHub: [Shiva250503ss](https://github.com/Shiva250503ss)

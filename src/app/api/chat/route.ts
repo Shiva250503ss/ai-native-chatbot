@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     };
 
     const result = streamText({
-      model: mistral('mistral-large-latest'),
+      model: mistral('mistral-small-latest'),
       messages,
       toolCallStreaming: true,
       tools,

@@ -127,55 +127,39 @@ function ChatMessageContentComponent({
       .join('') || message.content || '';
   }, [message.parts, message.content]);
 
-  // Split content by code blocks
-  const { textBlocks, codeBlocks } = useMemo(() => {
-    const parts = textContent.split('```');
-    const text: string[] = [];
-    const code: string[] = [];
-
-    parts.forEach((part, i) => {
-      if (i % 2 === 0) {
-        text.push(part);
-      } else {
-        code.push(part);
-      }
-    });
-
-    return { textBlocks: text, codeBlocks: code };
-  }, [textContent]);
-
-  // Render content with interleaved text and code blocks
-  const renderedContent = useMemo(() => {
-    const elements: React.ReactNode[] = [];
-
-    textBlocks.forEach((text, i) => {
-      if (text.trim()) {
-        elements.push(
-          <div key={`text-${i}`} className="prose dark:prose-invert w-full max-w-none">
-            <StableMarkdown content={text} />
-          </div>
-        );
-      }
-
-      if (codeBlocks[i]) {
-        elements.push(
-          <CodeBlock key={`code-${i}`} content={codeBlocks[i]} />
-        );
-      }
-    });
-
-    return elements;
-  }, [textBlocks, codeBlocks]);
-
   if (!textContent) {
     return null;
   }
 
-  return (
-    <div className="w-full">
-      {renderedContent}
-    </div>
-  );
+  // While streaming: plain text to avoid markdown re-parse flicker on every token
+  if (isLoading) {
+    return (
+      <div className="w-full whitespace-pre-wrap break-words text-sm leading-relaxed">
+        {textContent}
+        <span className="ml-0.5 inline-block h-4 w-0.5 animate-pulse bg-current align-middle opacity-70" />
+      </div>
+    );
+  }
+
+  // Done streaming: full markdown + code block rendering
+  const parts = textContent.split('```');
+  const elements: React.ReactNode[] = [];
+
+  parts.forEach((part, i) => {
+    if (i % 2 === 0) {
+      if (part.trim()) {
+        elements.push(
+          <div key={`text-${i}`} className="prose dark:prose-invert w-full max-w-none">
+            <StableMarkdown content={part} />
+          </div>
+        );
+      }
+    } else {
+      elements.push(<CodeBlock key={`code-${i}`} content={part} />);
+    }
+  });
+
+  return <div className="w-full">{elements}</div>;
 }
 
 // Memoize the entire component to prevent unnecessary re-renders
