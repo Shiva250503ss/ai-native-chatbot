@@ -12,6 +12,7 @@ import {
   Layers,
   PartyPopper,
   UserRoundSearch,
+  Sparkles,
 } from 'lucide-react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -34,6 +35,14 @@ const questionConfig = [
   { key: 'Fun', color: '#B95F9D', icon: PartyPopper },
   { key: 'Contact', color: '#C19433', icon: UserRoundSearch },
 ] as const;
+
+/* ---------- hi-tech stat strip ---------- */
+const heroStats = [
+  { label: 'MS Data Science', value: 'CU Boulder · 3.9/4.0' },
+  { label: 'Latest Build', value: 'GKE AI Observability Agent' },
+  { label: 'Stack', value: 'Python · React · Gemini · K8s' },
+  { label: 'Status', value: 'Open to Roles' },
+];
 
 /* ---------- component ---------- */
 export default function Home() {
@@ -82,6 +91,33 @@ export default function Home() {
 
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-10 md:pb-20">
+      {/* hi-tech grid background */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0 opacity-[0.20] dark:opacity-[0.30]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, rgba(99,102,241,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,0.18) 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+          maskImage:
+            'radial-gradient(ellipse at center, black 35%, transparent 75%)',
+        }}
+      />
+
+      {/* aurora glows */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-32 left-1/2 z-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-500/20 blur-[120px] dark:bg-blue-500/30"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-10 z-0 h-[280px] w-[280px] rounded-full bg-purple-500/15 blur-[120px] dark:bg-purple-500/25"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-10 bottom-20 z-0 h-[260px] w-[260px] rounded-full bg-emerald-500/15 blur-[120px] dark:bg-emerald-500/20"
+      />
+
       {/* big blurred footer word */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden">
         <div
@@ -119,7 +155,7 @@ export default function Home() {
 
       {/* header */}
       <motion.div
-        className="z-1 mt-24 mb-8 flex flex-col items-center text-center md:mt-4 md:mb-12"
+        className="z-10 mt-24 mb-6 flex flex-col items-center text-center md:mt-4 md:mb-10"
         variants={topElementVariants}
         initial="hidden"
         animate="visible"
@@ -128,10 +164,16 @@ export default function Home() {
           <WelcomeModal />
         </div>
 
-        <h2 className="text-secondary-foreground mt-1 text-xl font-semibold md:text-2xl">
+        {/* identity badge */}
+        <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/5 px-3 py-1 font-mono text-[11px] tracking-wider text-blue-700 uppercase backdrop-blur dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-300">
+          <Sparkles className="h-3 w-3" />
+          AI Engineer · Data Scientist · MLOps
+        </div>
+
+        <h2 className="text-secondary-foreground mt-3 text-xl font-semibold md:text-2xl">
           Hey, I'm Shivaraj 👋
         </h2>
-        <h1 className="text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="bg-gradient-to-br from-neutral-900 via-blue-600 to-neutral-900 bg-clip-text text-4xl font-bold text-transparent sm:text-5xl md:text-6xl lg:text-7xl dark:from-white dark:via-blue-300 dark:to-white">
           AI Portfolio
         </h1>
       </motion.div>
@@ -197,6 +239,24 @@ export default function Home() {
                 <span className="text-xs font-medium sm:text-sm">{key}</span>
               </div>
             </Button>
+          ))}
+        </div>
+
+        {/* hi-tech stat strip */}
+        <div className="mt-6 grid w-full max-w-3xl grid-cols-2 gap-2 px-2 sm:grid-cols-4">
+          {heroStats.map((s) => (
+            <div
+              key={s.label}
+              className="group relative overflow-hidden rounded-xl border border-neutral-200/70 bg-white/40 px-3 py-2 backdrop-blur-md transition hover:border-blue-400/60 dark:border-neutral-800/70 dark:bg-neutral-900/40"
+            >
+              <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="font-mono text-[10px] tracking-wider text-neutral-500 uppercase dark:text-neutral-400">
+                {s.label}
+              </div>
+              <div className="truncate text-xs font-semibold text-neutral-800 dark:text-neutral-100">
+                {s.value}
+              </div>
+            </div>
           ))}
         </div>
       </motion.div>

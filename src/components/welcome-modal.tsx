@@ -9,18 +9,39 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { motion } from 'framer-motion';
-import { X } from 'lucide-react';
+import { Bot, Cpu, MessagesSquare, Sparkles, X, Zap } from 'lucide-react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 interface WelcomeModalProps {
   trigger?: React.ReactNode;
 }
 
+const capabilities = [
+  {
+    icon: <Bot className="h-4 w-4" />,
+    title: 'Digital Twin',
+    body: 'I am Shiva. Ask anything — projects, internships, hobbies — the avatar answers in real time.',
+  },
+  {
+    icon: <Cpu className="h-4 w-4" />,
+    title: 'Tool-Calling AI',
+    body: 'Mistral + Vercel AI SDK with custom tools that surface my resume, projects, contact and presentation.',
+  },
+  {
+    icon: <Sparkles className="h-4 w-4" />,
+    title: 'Recruiter-Tuned',
+    body: 'Concise, technical answers if you are screening, casual chat if you are just exploring.',
+  },
+  {
+    icon: <Zap className="h-4 w-4" />,
+    title: 'Live Stack',
+    body: 'Next.js 16 · TypeScript · Tailwind · Framer Motion · streaming responses on Vercel.',
+  },
+];
+
 export default function WelcomeModal({ trigger }: WelcomeModalProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
 
   // Default trigger is the logo
   const defaultTrigger = (
@@ -64,10 +85,22 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
             {/* Header */}
             <DialogHeader className="relative flex flex-row items-start justify-between px-8 pt-8 pb-6">
               <div>
-                <DialogTitle className="flex items-center gap-2 text-4xl font-bold tracking-tight">
-                  Welcome to Shivaraj's AI Portfolio 🚀
+                <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/5 px-3 py-1 font-mono text-[11px] tracking-wider text-blue-700 uppercase dark:border-blue-400/30 dark:bg-blue-400/10 dark:text-blue-300">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  </span>
+                  System Online · v2026.5
+                </div>
+                <DialogTitle className="flex items-center gap-2 text-3xl font-bold tracking-tight md:text-4xl">
+                  <span className="bg-gradient-to-r from-neutral-900 via-blue-600 to-neutral-900 bg-clip-text text-transparent dark:from-white dark:via-blue-300 dark:to-white">
+                    Welcome to Shivaraj's AI Portfolio
+                  </span>{' '}
+                  🚀
                 </DialogTitle>
                 <DialogDescription className="mt-2 text-base">
+                  Not a static page. An interactive digital twin powered by an
+                  LLM with tool-calling.
                 </DialogDescription>
               </div>
               <Button
@@ -83,33 +116,67 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
 
             {/* Content area */}
             <div className="space-y-6 overflow-y-auto px-2 py-4 md:px-8">
-              <section className="bg-accent w-full space-y-8 rounded-2xl p-8">
-                {/* What section */}
-                <div className="space-y-3">
-                  <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    What's this? 🤔
-                  </h3>
-                  <p className="text-accent-foreground text-base leading-relaxed">
-                    This isn't your typical portfolio - it's an{' '}
-                    <strong>AI-powered chatbot that IS me!</strong>
-                    <br />Whether you're a recruiter, a fellow developer, or just curious about my work,
-                    ask anything you want! I'll respond just like the real Shivaraj would (but I never sleep 😄).
-                  </p>
-                </div>
+              {/* Hi-tech intro */}
+              <section className="relative w-full overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-[#F5F5F7] via-white to-[#EEF4FF] p-8 dark:border-neutral-800 dark:from-[#0E1320] dark:via-[#0B0F1A] dark:to-[#0E1320]">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-[0.20]"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(to right, rgba(99,102,241,0.18) 1px, transparent 1px), linear-gradient(to bottom, rgba(99,102,241,0.18) 1px, transparent 1px)',
+                    backgroundSize: '28px 28px',
+                    maskImage:
+                      'radial-gradient(ellipse at top right, black 30%, transparent 70%)',
+                  }}
+                />
 
-                {/* Why section */}
-                <div className="space-y-3">
-                  <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
-                    Why an AI Portfolio? 🎯
-                  </h3>
-                  <p className="text-accent-foreground text-base leading-relaxed">
-                    Traditional portfolios are static and one-size-fits-all. <br />
-                    Mine adapts to YOU! <br />
-                    <strong>
-                      Ask about my skills, projects, experience, or even my hobbies -
-                      I'll give you exactly what you're looking for.
-                    </strong>
-                  </p>
+                <div className="relative space-y-8">
+                  <div className="space-y-3">
+                    <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
+                      <MessagesSquare className="h-5 w-5" />
+                      What's this?
+                    </h3>
+                    <p className="text-accent-foreground text-base leading-relaxed">
+                      This isn't your typical portfolio — it's an{' '}
+                      <strong>AI-powered chatbot that IS me</strong>. Whether
+                      you're a recruiter, a fellow developer, or just curious
+                      about my work, ask anything. The avatar answers like the
+                      real Shivaraj would, but it never sleeps.
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-primary flex items-center gap-2 text-xl font-semibold">
+                      <Sparkles className="h-5 w-5" />
+                      Why an AI Portfolio?
+                    </h3>
+                    <p className="text-accent-foreground text-base leading-relaxed">
+                      Traditional portfolios are static and one-size-fits-all.
+                      Mine adapts to <strong>you</strong>. Ask about skills,
+                      projects, internships, even hobbies — get exactly what
+                      you're looking for, no scrolling required.
+                    </p>
+                  </div>
+
+                  {/* capability grid */}
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {capabilities.map((c) => (
+                      <div
+                        key={c.title}
+                        className="group rounded-xl border border-neutral-200 bg-white/70 p-4 backdrop-blur transition hover:-translate-y-0.5 hover:border-blue-400/60 dark:border-neutral-800 dark:bg-neutral-900/70"
+                      >
+                        <div className="mb-2 inline-flex items-center gap-2 rounded-md bg-blue-500/10 px-2 py-0.5 text-blue-600 dark:text-blue-300">
+                          {c.icon}
+                          <span className="text-[11px] font-semibold tracking-wider uppercase">
+                            {c.title}
+                          </span>
+                        </div>
+                        <p className="text-sm leading-relaxed text-neutral-700 dark:text-neutral-300">
+                          {c.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </section>
             </div>
@@ -123,14 +190,14 @@ export default function WelcomeModal({ trigger }: WelcomeModalProps) {
               >
                 Let's Chat! 🎉
               </Button>
-              <div
-                className="mt-6 flex cursor-pointer flex-wrap gap-1 text-center text-sm"
-              >
+              <div className="mt-6 flex cursor-pointer flex-wrap gap-1 text-center text-sm">
                 <p className="text-muted-foreground">
                   Love it? Let me know! Feedback always welcome.
                 </p>
-                <div className="flex cursor-pointer items-center text-blue-500 hover:underline"
-                  onClick={handleContactMe}>
+                <div
+                  className="flex cursor-pointer items-center text-blue-500 hover:underline"
+                  onClick={handleContactMe}
+                >
                   Contact me.
                 </div>
               </div>
