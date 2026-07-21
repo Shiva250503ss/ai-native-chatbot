@@ -39,7 +39,7 @@ const questionConfig = [
 /* ---------- hi-tech stat strip ---------- */
 const heroStats = [
   { label: 'MS Data Science', value: 'CU Boulder · 3.9/4.0' },
-  { label: 'Latest Build', value: 'GKE AI Observability Agent' },
+  { label: 'Latest Build', value: 'Fine-Tuned LLM Code Repair' },
   { label: 'Stack', value: 'Python · React · Gemini · K8s' },
   { label: 'Status', value: 'Open to Roles' },
 ];
@@ -59,7 +59,7 @@ export default function Home() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: 'ease', duration: 0.8 },
+      transition: { type: 'tween' as const, duration: 0.8 },
     },
   };
   const bottomElementVariants = {
@@ -67,7 +67,7 @@ export default function Home() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { type: 'ease', duration: 0.8, delay: 0.2 },
+      transition: { type: 'tween' as const, duration: 0.8, delay: 0.2 },
     },
   };
 
