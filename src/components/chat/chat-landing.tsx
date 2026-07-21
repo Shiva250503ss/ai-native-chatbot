@@ -24,8 +24,8 @@ const ChatLanding: React.FC<ChatLandingProps> = ({ submitQuery }) => {
     },
     {
       icon: <Workflow className="h-4 w-4" />,
-      text: 'Tell me about your BigData AI Observability project',
-      hint: 'featured · GKE · RAG',
+      text: 'Tell me about your Code Repair Assistant project',
+      hint: 'featured · LLM fine-tuning',
     },
     {
       icon: <Code className="h-4 w-4" />,

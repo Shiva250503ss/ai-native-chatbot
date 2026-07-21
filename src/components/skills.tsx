@@ -37,6 +37,23 @@ const Skills = () => {
       color: 'bg-emerald-50 text-emerald-600 border border-emerald-200',
     },
     {
+      category: 'LLM Fine-Tuning & Evaluation',
+      icon: <Cpu className="h-5 w-5" />,
+      skills: [
+        'LoRA / QLoRA / DoRA',
+        'DPO (Preference Tuning)',
+        'PEFT',
+        'TRL',
+        'GGUF Quantization',
+        'Ollama',
+        'pass@1 / HumanEval Eval',
+        'Hybrid RAG + Knowledge Graph',
+        'Cross-Encoder Reranking',
+        'Sandboxed Code Execution',
+      ],
+      color: 'bg-rose-50 text-rose-600 border border-rose-200',
+    },
+    {
       category: 'Data Visualization & BI',
       icon: <PenTool className="h-5 w-5" />,
       skills: [

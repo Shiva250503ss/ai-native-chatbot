@@ -8,7 +8,7 @@ export const getInternship = tool({
   execute: async () => {
     return `Here's what I'm looking for 👇
 
-- 📅 **Availability**: Currently pursuing MS @ CU Boulder (Grad: May 2026), open to full-time opportunities
+- 📅 **Availability**: MS in Data Science @ CU Boulder (Graduated May 2026) — available now for full-time opportunities
 - 🌍 **Location**: Boulder, CO (Open to Relocate anywhere in the US!)
 - 🧑‍💻 **Focus**: AI Engineering, Data Science, Machine Learning, Data Engineering
 - 🛠️ **Stack**: Python, PyTorch, TensorFlow, LangChain, SQL, Spark, AWS, Tableau, Power BI

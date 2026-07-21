@@ -53,7 +53,7 @@ const InternshipCard = () => {
           <div>
             <p className="text-foreground text-sm font-medium">Availability</p>
             <p className="text-muted-foreground text-sm">
-              Currently pursuing MS in Data Science @ CU Boulder (Grad: May 2026)
+              MS in Data Science @ CU Boulder (Graduated May 2026) — available now
             </p>
           </div>
         </div>

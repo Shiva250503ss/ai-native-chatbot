@@ -10,7 +10,7 @@ export function Presentation() {
     age: '23 years old',
     location: 'Boulder, CO (Open to Relocate)',
     description:
-      "Hey 👋\nI'm Shivaraj (call me Shiva!), a Data Science grad student at CU Boulder. I build AI-powered solutions that solve real problems - from RAG pipelines to end-to-end ML systems. When I'm not training models, I'm probably watching cricket, gaming, or cooking up something tasty! 🏏🎮👨‍🍳",
+      "Hey 👋\nI'm Shivaraj (call me Shiva!), an AI/ML engineer who just graduated with an MS in Data Science from CU Boulder. I build AI-powered systems that solve real problems - from fine-tuned LLMs and RAG pipelines to end-to-end ML platforms. When I'm not training models, I'm probably watching cricket, gaming, or cooking up something tasty! 🏏🎮👨‍🍳",
     src: '/profile-shivaraj.jpg',
     fallbackSrc:
       'https://images.unsplash.com/photo-1610216705422-caa3fcb6d158?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3',

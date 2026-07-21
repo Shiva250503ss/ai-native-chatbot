@@ -7,9 +7,9 @@ export function Resume() {
   // Resume details
   const resumeDetails = {
     title: "Shivaraj's Resume",
-    description: 'AI Engineer • Data Scientist • ML Enthusiast',
+    description: 'AI/ML Engineer • Data Scientist • LLM Fine-Tuning',
     fileType: 'PDF',
-    lastUpdated: 'January 2026',
+    lastUpdated: 'July 2026',
     fileSize: '0.2 MB',
     downloadUrl: '/Resume_Shivaraj_AI.pdf',
   };

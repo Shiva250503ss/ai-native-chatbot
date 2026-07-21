@@ -41,6 +41,124 @@ interface ProjectData {
 // --- PROJECT DATABASE ---
 const PROJECT_CONTENT: ProjectData[] = [
   {
+    title: 'Code Repair Assistant — Fine-Tuned LLM for Bug Repair',
+    tagline:
+      'Fine-tuned Qwen2.5-Coder that fixes broken Python — every training label, retrieval hit and model output verified by actually executing code in a sandbox, never by trusting the model.',
+    description:
+      "An end-to-end code-repair system that fine-tunes an LLM to fix broken Python functions, with one hard rule: nothing is trusted unless it runs. A sandboxed execution engine grades every training label, every retrieved example and every generated fix by actually running the code. I injected realistic bugs into 974 real MBPP problems to build 3,760 sandbox-verified (broken code → real error → correct fix) pairs, built a hybrid RAG + knowledge-graph retriever over them, then fine-tuned Qwen2.5-Coder (1.5B) with LoRA/QLoRA/DoRA and DPO — lifting pass@1 from 68.7% (base) to 93.3% on a held-out HumanEval-derived set, measured by executing every fix. Shipped locally via Ollama behind a FastAPI + web UI that re-runs each fix in the sandbox before showing it as passing.",
+    status: 'Shipped',
+    highlights: [
+      { label: 'pass@1 Lift', value: '68.7% → 93.3%' },
+      { label: 'Base Model', value: 'Qwen2.5-Coder 1.5B' },
+      { label: 'Training Pairs', value: '3,760 verified' },
+      { label: 'DPO Pairs', value: '3,752 preference' },
+      { label: 'Sandbox Tests', value: '11/11 passed' },
+      { label: 'Deploy', value: 'Ollama · GGUF q4_k_m' },
+    ],
+    features: [
+      {
+        icon: <ShieldCheck className="h-4 w-4" />,
+        title: 'Sandboxed Execution Engine',
+        body:
+          'Subprocess isolation with timeout, memory limits and filesystem/network restrictions — validated against 11 known-outcome cases before grading any data or model output.',
+      },
+      {
+        icon: <GitBranch className="h-4 w-4" />,
+        title: 'AST Bug-Injection Pipeline',
+        body:
+          'AST-level mutation on 974 real MBPP problems → 3,760 (broken code, real error, correct fix) pairs. Zero synthetic errors — every message captured from a real execution.',
+      },
+      {
+        icon: <Network className="h-4 w-4" />,
+        title: 'Hybrid RAG + Knowledge Graph',
+        body:
+          'Dense vector search (Qdrant/MiniLM) + BM25 + a bug-type/code-structure knowledge graph, fused via Reciprocal Rank Fusion and cross-encoder reranking. Evaluated with recall@k, nDCG and MRR.',
+      },
+      {
+        icon: <Cpu className="h-4 w-4" />,
+        title: 'LoRA · QLoRA · DoRA + DPO',
+        body:
+          'Fine-tuned every adapter variant, then applied Direct Preference Optimization on the best one — all benchmarked by executing each generated fix on a held-out set.',
+      },
+      {
+        icon: <Activity className="h-4 w-4" />,
+        title: 'Live-Verified Serving',
+        body:
+          'FastAPI + web UI where every fix is re-executed in the sandbox before it is shown as passing. No model self-assessment anywhere in the pipeline.',
+      },
+      {
+        icon: <Sparkles className="h-4 w-4" />,
+        title: 'Honest Negative Results',
+        body:
+          'Reported the misses too — DPO regressed this run (93.3% → 50.0% pass@1) and retrieval context slightly hurt the fine-tuned model — instead of cherry-picking wins.',
+      },
+    ],
+    stackGroups: [
+      {
+        name: 'Backend & AI',
+        items: [
+          'Qwen2.5-Coder (1.5B)',
+          'PyTorch',
+          'Hugging Face Transformers',
+          'PEFT (LoRA/QLoRA/DoRA)',
+          'TRL (DPO)',
+          'FastAPI',
+        ],
+      },
+      {
+        name: 'Data & Orchestration',
+        items: [
+          'AST mutation pipeline',
+          'MBPP dataset (974 problems)',
+          'Sandboxed execution',
+          'HumanEval-derived eval set',
+        ],
+      },
+      {
+        name: 'Frontend',
+        items: ['Web UI', 'Live sandbox verification'],
+      },
+      {
+        name: 'Infrastructure',
+        items: [
+          'Ollama',
+          'GGUF quantization (q4_k_m)',
+          'Qdrant (vector search)',
+          'BM25',
+          'Cross-encoder reranker',
+          'CUDA / Colab GPU',
+        ],
+      },
+    ],
+    techStack: [
+      'Qwen2.5-Coder',
+      'PyTorch',
+      'Transformers / PEFT / TRL',
+      'LoRA / QLoRA / DoRA',
+      'DPO',
+      'Qdrant',
+      'BM25',
+      'Knowledge Graph',
+      'FastAPI',
+      'Ollama',
+      'GGUF',
+      'Sandboxed Execution',
+    ],
+    date: 'July 2026',
+    links: [
+      {
+        name: 'GitHub Repository',
+        url: 'https://github.com/Shiva250503ss',
+      },
+    ],
+    images: [
+      {
+        src: '/projects/code-repair-preview.png',
+        alt: 'Code Repair Assistant — fine-tuned LLM for automated Python bug repair',
+      },
+    ],
+  },
+  {
     title: 'BigData Platform — AI Observability Agent',
     tagline:
       'GKE-deployed big-data platform with a RAG-powered Gemini chatbot that diagnoses pipeline failures, K8s pod issues and traces lineage in real time.',
@@ -625,6 +743,16 @@ const ProjectContent = ({ project }: { project: ProjectProps }) => {
 
 // --- MAIN DATA EXPORT ---
 export const data = [
+  {
+    category: 'LLM Fine-Tuning · RAG · Eval',
+    title: 'Code Repair Assistant — Fine-Tuned LLM for Bug Repair',
+    src: '/projects/code-repair-preview.png',
+    content: (
+      <ProjectContent
+        project={{ title: 'Code Repair Assistant — Fine-Tuned LLM for Bug Repair' }}
+      />
+    ),
+  },
   {
     category: 'AIOps · GKE · RAG',
     title: 'BigData Platform — AI Observability Agent',
